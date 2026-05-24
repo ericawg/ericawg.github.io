@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tennis Court Reservations</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎾</text></svg>" />
+</head>
+<body>
+  <header>
+    <div class="title-row">
+      <h1>🎾 Tennis Court</h1>
+      <div id="me-chip" class="me-chip" hidden>
+        <span id="me-name"></span>
+        <button id="me-edit" type="button" aria-label="Change name">change</button>
+      </div>
+    </div>
+    <div id="status" class="status" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <section class="week-nav">
+      <button id="prev-week" type="button" aria-label="Previous week">←</button>
+      <div id="week-label"></div>
+      <button id="next-week" type="button" aria-label="Next week">→</button>
+      <button id="today-btn" type="button" class="today-btn">Today</button>
+    </section>
+
+    <section id="grid-wrap" class="grid-wrap">
+      <div id="grid" class="grid" role="grid" aria-label="Court availability"></div>
+    </section>
+
+    <section id="my-bookings" class="my-bookings" hidden>
+      <h2>Your bookings</h2>
+      <ul id="my-list"></ul>
+      <div class="limit-bar">
+        <div id="limit-text"></div>
+        <div class="limit-track"><div id="limit-fill" class="limit-fill"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="book-dialog">
+    <form method="dialog" id="book-form">
+      <h3 id="book-title">Book this slot</h3>
+      <p id="book-when" class="book-when"></p>
+      <label>
+        Your name
+        <input type="text" id="input-name" required autocomplete="name" maxlength="40" />
+      </label>
+      <label>
+        Email
+        <input type="email" id="input-email" required autocomplete="email" maxlength="80" />
+      </label>
+      <p id="book-error" class="book-error" hidden></p>
+      <menu>
+        <button value="cancel" type="button" id="book-cancel">Cancel</button>
+        <button value="book" id="book-confirm" class="primary">Book</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer>
+    <small>Bookings live in this browser only — clearing site data wipes them. Honor system: please don't book more than 4 hours/week.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
